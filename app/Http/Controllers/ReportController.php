@@ -19,12 +19,14 @@ class ReportController extends Controller
             ->leftJoin('subscriptions', 'subscriptions.id', '=', 'devices.subscription_status')
             ->groupBy('devices.app_id')
             ->groupBy('devices.operating_system_id')
-            ->get([
+            ->get(
+                [
                 DB::raw('DATE(devices.created_at) date'),
                 'apps.name as app_name',
                 'operating_systems.name as os',
                 'subscriptions.status_name',
                 DB::raw('COUNT(*) numbers')
-            ]);
+                ]
+            );
     }
 }

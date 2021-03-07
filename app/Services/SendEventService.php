@@ -42,20 +42,20 @@ class SendEventService
     /**
      * Select Event.
      *
-     * @param Device $device
+     * @param  Device $device
      * @return string
      */
     private static function selectEvent(Device $device)
     {
         switch ($device->subscription_status) {
-            case "0":
-                return NotSubscriber::class;
-            case "1":
-                return Started::class;
-            case "2":
-                return Renewed::class;
-            case "3":
-                return Canceled::class;
+        case "0":
+            return NotSubscriber::class;
+        case "1":
+            return Started::class;
+        case "2":
+            return Renewed::class;
+        case "3":
+            return Canceled::class;
         }
     }
 }
